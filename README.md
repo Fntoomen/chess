@@ -1,3 +1,2 @@
-# chess
-
-Chess engine programmer in Python.
+# CHESS
+## Chess engine made in Python.
