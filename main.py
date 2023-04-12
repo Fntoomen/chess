@@ -336,7 +336,8 @@ def draw_grid(win, rows, width):
 
     """
     The nodes are all white so this we need to draw the grey lines that separate all the chess tiles
-    from each other and that is what this function does"""
+    from each other and that is what this function does
+    """
 
 
 def update_display(win, grid, rows, width):
