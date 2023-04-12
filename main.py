@@ -13,10 +13,10 @@ class Piece:
         self.type = type
         self.killable = killable
         self.image = image
-        def Load():
-            img = pygame.image.load(self.image)
-            img = pygame.transform.scale(img, (200, 200))
-            return img
+    def load(self):
+        img = pygame.image.load(self.image)
+        img = pygame.transform.scale(img, (100, 100))
+        return img
 
 
 ## Creates instances of chess pieces, so far we got: pawn, king, rook and bishop
@@ -35,14 +35,14 @@ bkn = Piece('b', 'kn', 'pieces/bN.svg')
 wkn = Piece('w', 'kn', 'pieces/wN.svg')
 
 
-starting_order = {(0, 0): br.Load, (1, 0): pygame.image.load(bkn.image),
-                  (2, 0): pygame.image.load(bb.image), (3, 0): pygame.image.load(bq.image),
-                  (4, 0): pygame.image.load(bk.image), (5, 0): pygame.image.load(bb.image),
-                  (6, 0): pygame.image.load(bkn.image), (7, 0): pygame.image.load(br.image),
-                  (0, 1): pygame.image.load(bp.image), (1, 1): pygame.image.load(bp.image),
-                  (2, 1): pygame.image.load(bp.image), (3, 1): pygame.image.load(bp.image),
-                  (4, 1): pygame.image.load(bp.image), (5, 1): pygame.image.load(bp.image),
-                  (6, 1): pygame.image.load(bp.image), (7, 1): pygame.image.load(bp.image),
+starting_order = {(0, 0): br.load(), (1, 0): bkn.load(),
+                  (2, 0): bb.load(), (3, 0): bq.load(),
+                  (4, 0): bk.load(), (5, 0): bb.load(),
+                  (6, 0): bkn.load(), (7, 0): br.load(),
+                  (0, 1): bp.load(), (1, 1): bp.load(),
+                  (2, 1): bp.load(), (3, 1): bp.load(),
+                  (4, 1): bp.load(), (5, 1): bp.load(),
+                  (6, 1): bp.load(), (7, 1): bp.load(),
 
                   (0, 2): None, (1, 2): None, (2, 2): None, (3, 2): None,
                   (4, 2): None, (5, 2): None, (6, 2): None, (7, 2): None,
@@ -53,14 +53,14 @@ starting_order = {(0, 0): br.Load, (1, 0): pygame.image.load(bkn.image),
                   (0, 5): None, (1, 5): None, (2, 5): None, (3, 5): None,
                   (4, 5): None, (5, 5): None, (6, 5): None, (7, 5): None,
 
-                  (0, 6): pygame.image.load(wp.image), (1, 6): pygame.image.load(wp.image),
-                  (2, 6): pygame.image.load(wp.image), (3, 6): pygame.image.load(wp.image),
-                  (4, 6): pygame.image.load(wp.image), (5, 6): pygame.image.load(wp.image),
-                  (6, 6): pygame.image.load(wp.image), (7, 6): pygame.image.load(wp.image),
-                  (0, 7): pygame.image.load(wr.image), (1, 7): pygame.image.load(wkn.image),
-                  (2, 7): pygame.image.load(wb.image), (3, 7): pygame.image.load(wq.image),
-                  (4, 7): pygame.image.load(wk.image), (5, 7): pygame.image.load(wb.image),
-                  (6, 7): pygame.image.load(wkn.image), (7, 7): pygame.image.load(wr.image),}
+                  (0, 6): wp.load(), (1, 6): wp.load(),
+                  (2, 6): wp.load(), (3, 6): wp.load(),
+                  (4, 6): wp.load(), (5, 6): wp.load(),
+                  (6, 6): wp.load(), (7, 6): wp.load(),
+                  (0, 7): wr.load(), (1, 7): wkn.load(),
+                  (2, 7): wb.load(), (3, 7): wq.load(),
+                  (4, 7): wk.load(), (5, 7): wb.load(),
+                  (6, 7): wkn.load(), (7, 7): wr.load(),}
 
 
 def create_board(board):
