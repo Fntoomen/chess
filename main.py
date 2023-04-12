@@ -389,7 +389,7 @@ def main(WIN, WIDTH):
     piece_to_move=[]
     grid = make_grid(8, WIDTH)
     while True:
-        pygame.time.delay(50) ##stops cpu dying
+        pygame.time.delay(10) # Stops cpu dying
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
