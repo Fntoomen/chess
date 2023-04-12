@@ -13,6 +13,10 @@ class Piece:
         self.type = type
         self.killable = killable
         self.image = image
+        def Load():
+            img = pygame.image.load(self.image)
+            img = pygame.transform.scale(img, (200, 200))
+            return img
 
 
 ## Creates instances of chess pieces, so far we got: pawn, king, rook and bishop
@@ -31,7 +35,7 @@ bkn = Piece('b', 'kn', 'pieces/bN.svg')
 wkn = Piece('w', 'kn', 'pieces/wN.svg')
 
 
-starting_order = {(0, 0): pygame.image.load(br.image), (1, 0): pygame.image.load(bkn.image),
+starting_order = {(0, 0): br.Load, (1, 0): pygame.image.load(bkn.image),
                   (2, 0): pygame.image.load(bb.image), (3, 0): pygame.image.load(bq.image),
                   (4, 0): pygame.image.load(bk.image), (5, 0): pygame.image.load(bb.image),
                   (6, 0): pygame.image.load(bkn.image), (7, 0): pygame.image.load(br.image),
