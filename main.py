@@ -31,14 +31,14 @@ bb = Piece('b', 'b', 'pieces/bB.svg')
 wb = Piece('w', 'b', 'pieces/wB.svg')
 bq = Piece('b', 'q', 'pieces/bQ.svg')
 wq = Piece('w', 'q', 'pieces/wQ.svg')
-bkn = Piece('b', 'kn', 'pieces/bN.svg')
-wkn = Piece('w', 'kn', 'pieces/wN.svg')
+bn = Piece('b', 'kn', 'pieces/bN.svg')
+wn = Piece('w', 'kn', 'pieces/wN.svg')
 
 
-starting_order = {(0, 0): br.load(), (1, 0): bkn.load(),
+starting_order = {(0, 0): br.load(), (1, 0): bn.load(),
                   (2, 0): bb.load(), (3, 0): bq.load(),
                   (4, 0): bk.load(), (5, 0): bb.load(),
-                  (6, 0): bkn.load(), (7, 0): br.load(),
+                  (6, 0): bn.load(), (7, 0): br.load(),
                   (0, 1): bp.load(), (1, 1): bp.load(),
                   (2, 1): bp.load(), (3, 1): bp.load(),
                   (4, 1): bp.load(), (5, 1): bp.load(),
@@ -57,10 +57,10 @@ starting_order = {(0, 0): br.load(), (1, 0): bkn.load(),
                   (2, 6): wp.load(), (3, 6): wp.load(),
                   (4, 6): wp.load(), (5, 6): wp.load(),
                   (6, 6): wp.load(), (7, 6): wp.load(),
-                  (0, 7): wr.load(), (1, 7): wkn.load(),
+                  (0, 7): wr.load(), (1, 7): wn.load(),
                   (2, 7): wb.load(), (3, 7): wq.load(),
                   (4, 7): wk.load(), (5, 7): wb.load(),
-                  (6, 7): wkn.load(), (7, 7): wr.load(),}
+                  (6, 7): wn.load(), (7, 7): wr.load(),}
 
 
 def create_board(board):
