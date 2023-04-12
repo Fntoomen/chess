@@ -6,7 +6,7 @@ import sys
 
 board = [['  ' for i in range(8)] for i in range(8)]
 
-## Creates a chess piece class that shows what team a piece is on, what type of piece it is and whether or not it can be killed by another selected piece.
+# Creates a chess piece class that shows what team a piece is on, what type of piece it is and whether or not it can be killed by another selected piece.
 class Piece:
     def __init__(self, team, type, image, killable=False):
         self.team = team
@@ -19,8 +19,8 @@ class Piece:
         return img
 
 
-## Creates instances of chess pieces, so far we got: pawn, king, rook and bishop
-## The first parameter defines what team its on and the second, what type of piece it is
+# Creates instances of chess pieces, so far we got: pawn, king, rook and bishop
+# The first parameter defines what team its on and the second, what type of piece it is
 bp = Piece('b', 'p', 'pieces/bP.svg')
 wp = Piece('w', 'p', 'pieces/wP.svg')
 bk = Piece('b', 'k', 'pieces/bK.svg')
@@ -78,13 +78,13 @@ def create_board(board):
     return board
 
 
-## returns the input if the input is within the boundaries of the board
+# Returns the input if the input is within the boundaries of the board
 def on_board(position):
     if position[0] > -1 and position[1] > -1 and position[0] < 8 and position[1] < 8:
         return True
 
 
-## returns a string that places the rows and columns of the board in a readable manner
+# Returns a string that places the rows and columns of the board in a readable manner
 def convert_to_readable(board):
     output = ''
 
@@ -98,7 +98,7 @@ def convert_to_readable(board):
     return output
 
 
-## resets "x's" and killable pieces
+# Resets "x's" and killable pieces
 def deselect():
     for row in range(len(board)):
         for column in range(len(board[0])):
@@ -112,7 +112,7 @@ def deselect():
     return convert_to_readable(board)
 
 
-## Takes in board as argument then returns 2d array containing positions of valid moves
+# Takes in board as argument then returns 2d array containing positions of valid moves
 def highlight(board):
     highlighted = []
     for i in range(len(board)):
@@ -136,7 +136,7 @@ def check_team(moves, index):
         if board[row][col].team == 'b':
             return True
 
-## This takes in a piece object and its index then runs then checks where that piece can move using separately defined functions for each type of piece.
+# This takes in a piece object and its index then runs then checks where that piece can move using separately defined functions for each type of piece.
 def select_moves(piece, index, moves):
     if check_team(moves, index):
         if piece.type == 'p':
@@ -161,7 +161,7 @@ def select_moves(piece, index, moves):
             return highlight(knight_moves(index))
 
 
-## Basically, check black and white pawns separately and checks the square above them. If its free that space gets an "x" and if it is occupied by a piece of the opposite team then that piece becomes killable.
+# Basically, check black and white pawns separately and checks the square above them. If its free that space gets an "x" and if it is occupied by a piece of the opposite team then that piece becomes killable.
 def pawn_moves_b(index):
     if index[0] == 1:
         if board[index[0] + 2][index[1]] == '  ' and board[index[0] + 1][index[1]] == '  ':
@@ -201,7 +201,7 @@ def pawn_moves_w(index):
     return board
 
 
-## This just checks a 3x3 tile surrounding the king. Empty spots get an "x" and pieces of the opposite team become killable.
+# This just checks a 3x3 tile surrounding the king. Empty spots get an "x" and pieces of the opposite team become killable.
 def king_moves(index):
     for y in range(3):
         for x in range(3):
@@ -214,7 +214,7 @@ def king_moves(index):
     return board
 
 
-## This creates 4 lists for up, down, left and right and checks all those spaces for pieces of the opposite team. The list comprehension is pretty long so if you don't get it just msg me.
+# This creates 4 lists for up, down, left and right and checks all those spaces for pieces of the opposite team. The list comprehension is pretty long so if you don't get it just msg me.
 def rook_moves(index):
     cross = [[[index[0] + i, index[1]] for i in range(1, 8 - index[0])],
              [[index[0] - i, index[1]] for i in range(1, index[0] + 1)],
@@ -233,7 +233,7 @@ def rook_moves(index):
     return board
 
 
-## Same as the rook but this time it creates 4 lists for the diagonal directions and so the list comprehension is a little bit trickier.
+# Same as the rook but this time it creates 4 lists for the diagonal directions and so the list comprehension is a little bit trickier.
 def bishop_moves(index):
     diagonals = [[[index[0] + i, index[1] + i] for i in range(1, 8)],
                  [[index[0] + i, index[1] - i] for i in range(1, 8)],
@@ -252,14 +252,14 @@ def bishop_moves(index):
     return board
 
 
-## applies the rook moves to the board then the bishop moves because a queen is basically a rook and bishop in the same position.
+# Applies the rook moves to the board then the bishop moves because a queen is basically a rook and bishop in the same position.
 def queen_moves(index):
     board = rook_moves(index)
     board = bishop_moves(index)
     return board
 
 
-## Checks a 5x5 grid around the piece and uses pythagoras to see if if a move is valid. Valid moves will be a distance of sqrt(5) from centre
+# Checks a 5x5 grid around the piece and uses pythagoras to see if if a move is valid. Valid moves will be a distance of sqrt(5) from centre
 def knight_moves(index):
     for i in range(-2, 3):
         for j in range(-2, 3):
@@ -277,7 +277,8 @@ WIDTH = 800
 
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 
-""" This is creating the window that we are playing on, it takes a tuple argument which is the dimensions of the window so in this case 800 x 800px
+"""
+This is creating the window that we are playing on, it takes a tuple argument which is the dimensions of the window so in this case 800 x 800px
 """
 
 pygame.display.set_caption("Chess")
