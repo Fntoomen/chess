@@ -15,7 +15,7 @@ class Piece:
         self.image = image
     def load(self):
         img = pygame.image.load(self.image)
-        img = pygame.transform.scale(img, (100, 100))
+        img = pygame.transform.scale(img, (90, 90))
         return img
 
 
@@ -31,8 +31,8 @@ bb = Piece('b', 'b', 'pieces/bB.svg')
 wb = Piece('w', 'b', 'pieces/wB.svg')
 bq = Piece('b', 'q', 'pieces/bQ.svg')
 wq = Piece('w', 'q', 'pieces/wQ.svg')
-bn = Piece('b', 'kn', 'pieces/bN.svg')
-wn = Piece('w', 'kn', 'pieces/wN.svg')
+bn = Piece('b', 'n', 'pieces/bN.svg')
+wn = Piece('w', 'n', 'pieces/wN.svg')
 
 
 starting_order = {(0, 0): br.load(), (1, 0): bn.load(),
@@ -64,13 +64,13 @@ starting_order = {(0, 0): br.load(), (1, 0): bn.load(),
 
 
 def create_board(board):
-    board[0] = [Piece('b', 'r', 'bR.svg'), Piece('b', 'kn', 'bN.svg'), Piece('b', 'b', 'bB.svg'), \
+    board[0] = [Piece('b', 'r', 'bR.svg'), Piece('b', 'n', 'bN.svg'), Piece('b', 'b', 'bB.svg'), \
                Piece('b', 'q', 'bQ.svg'), Piece('b', 'k', 'bK.svg'), Piece('b', 'b', 'bB.svg'), \
-               Piece('b', 'kn', 'bN.svg'), Piece('b', 'r', 'bR.svg')]
+               Piece('b', 'n', 'bN.svg'), Piece('b', 'r', 'bR.svg')]
 
-    board[7] = [Piece('w', 'r', 'wR.svg'), Piece('w', 'kn', 'wN.svg'), Piece('w', 'b', 'wB.svg'), \
+    board[7] = [Piece('w', 'r', 'wR.svg'), Piece('w', 'n', 'wN.svg'), Piece('w', 'b', 'wB.svg'), \
                Piece('w', 'q', 'wQ.svg'), Piece('w', 'k', 'wK.svg'), Piece('w', 'b', 'wB.svg'), \
-               Piece('w', 'kn', 'wN.svg'), Piece('w', 'r', 'wR.svg')]
+               Piece('w', 'n', 'wN.svg'), Piece('w', 'r', 'wR.svg')]
 
     for i in range(8):
         board[1][i] = Piece('b', 'p', 'bP.svg')
@@ -157,7 +157,7 @@ def select_moves(piece, index, moves):
         if piece.type == 'q':
             return highlight(queen_moves(index))
 
-        if piece.type == 'kn':
+        if piece.type == 'n':
             return highlight(knight_moves(index))
 
 
@@ -273,7 +273,7 @@ def knight_moves(index):
     return board
 
 
-WIDTH = 800
+WIDTH = 720
 
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 
