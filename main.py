@@ -304,8 +304,7 @@ class Node:
                 WIN.blit(starting_order[(self.row, self.col)], (self.x, self.y))
 
         """
-        For now it is drawing a rectangle but eventually we are going to need it
-        to use blit to draw the chess pieces instead
+        For now it is drawing a rectangle but eventually we are going to need it to use blit to draw the chess pieces instead
         """
 
 
@@ -321,10 +320,9 @@ def make_grid(rows, width):
             if (i+j)%2 ==1:
                 grid[i][j].colour = GREY
     return grid
-"""
-This is creating the nodes thats are on the board(so the chess tiles)
-I've put them into a 2d array which is identical to the dimesions of the chessboard
-"""
+    """
+    This is creating the nodes thats are on the board (so the chess tiles) I've put them into a 2d array which is identical to the dimesions of the chessboard
+    """
 
 
 def draw_grid(win, rows, width):
@@ -335,8 +333,7 @@ def draw_grid(win, rows, width):
             pygame.draw.line(win, BLACK, (j * gap, 0), (j * gap, width))
 
     """
-    The nodes are all white so this we need to draw the grey lines that separate all the chess tiles
-    from each other and that is what this function does
+    The nodes are all white so this we need to draw the grey lines that separate all the chess tiles from each other and that is what this function does
     """
 
 
@@ -379,8 +376,9 @@ def remove_highlight(grid):
             else:
                 grid[i][j].colour = GREY
     return grid
-"""this takes in 2 co-ordinate parameters which you can get as the position of the piece and then the position of the node it is moving to
-you can get those co-ordinates using my old function for swap"""
+    """
+    This takes in 2 coordinate parameters which you can get as the position of the piece and then the position of the node it is moving to you can get those co-ordinates using my old function for swap
+    """
 
 create_board(board)
 
@@ -397,7 +395,9 @@ def main(WIN, WIDTH):
                 pygame.quit()
                 sys.exit()
 
-            """This quits the program if the player closes the window"""
+            """
+            This quits the program if the player closes the window
+            """
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
@@ -413,12 +413,12 @@ def main(WIN, WIDTH):
                     except:
                         piece_to_move = []
                         print('Can\'t select')
-                    #print(piece_to_move)
+                    # print(piece_to_move)
 
                 else:
                     try:
                         if board[x][y].killable == True:
-                            row, col = piece_to_move ## coords of original piece
+                            row, col = piece_to_move # Coords of original piece
                             board[x][y] = board[row][col]
                             board[row][col] = '  '
                             deselect()
