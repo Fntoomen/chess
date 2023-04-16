@@ -3,6 +3,9 @@ _G.love = require("love")
 function love.load()
     local width = love.graphics.getDimensions()
     Squere_size = width / 8
+
+    local letters = {"a","b","c","d","e","f","g","h"}
+
     Starting_position = {
         {"bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"},
         {"bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"},
@@ -14,19 +17,26 @@ function love.load()
         {"wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"},
 
     }
+
     function Piece(notation)
         return {
-            x, y = 0, 0,
+            letter = 0,
+            number = 0,
             legal_moves = {},
             image = love.graphics.newImage("pieces/"..notation..".svg.png")
         }
     end
+
     Pieces = {}
     for i = 1, #Starting_position do
         Pieces[i] = {}
         for j = 1, #Starting_position[i] do
             if Starting_position[i][j] ~= "" then
+
                 Pieces[i][j] = Piece(Starting_position[i][j])
+                Pieces[i][j].letter = letters[j]
+                Pieces[i][j].numer = i
+
             end
         end
     end
@@ -43,13 +53,17 @@ function love.draw()
             else
                 love.graphics.setColor(118 / 255, 150 / 255, 86 / 255)
             end
+
             love.graphics.rectangle("fill", i * Squere_size, j * Squere_size, Squere_size, Squere_size)
+
         end
     end
     for i = 1, #Starting_position do
         for j = 1, #Starting_position[i] do
             if Pieces[j][i] ~= nil then
+
                 love.graphics.draw(Pieces[j][i].image, (i-1) * Squere_size + 5, (j-1) * Squere_size + 5)
+                
             end
         end
     end
