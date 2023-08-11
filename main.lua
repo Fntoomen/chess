@@ -19,10 +19,20 @@ function love.load()
     }
 
     function Piece(notation)
+        local function legalMoves()
+            if notation[2] == "P" then
+                legal_moves = {{0, 1}, {0, 2}}
+            elseif notation[2] == "R" then
+                legal_moves = {}
+                for i = 1, 8 do
+                    legal_moves[i] = {}
+                end
+            end
+        end
         return {
-            letter = 0,
+            letter = "",
             number = 0,
-            legal_moves = {},
+            legal_moves,
             image = love.graphics.newImage("pieces/"..notation..".svg.png")
         }
     end
@@ -63,7 +73,7 @@ function love.draw()
             if Pieces[j][i] ~= nil then
 
                 love.graphics.draw(Pieces[j][i].image, (i-1) * Squere_size + 5, (j-1) * Squere_size + 5)
-                
+
             end
         end
     end
